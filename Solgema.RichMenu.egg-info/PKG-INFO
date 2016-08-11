@@ -1,8 +1,8 @@
 Metadata-Version: 1.1
 Name: Solgema.RichMenu
-Version: 1.5
-Summary: Solgema Portlets Manager
-Home-page: http://www.martronic.ch/plone_products/Solgema.PortletsManager
+Version: 1.6.1
+Summary: Solgema RichMenu for Plone
+Home-page: http://www.martronic.ch/plone_products/Solgema.RichMenu
 Author: Martronic SA
 Author-email: martronic@martronic.ch
 License: GPL
@@ -20,12 +20,15 @@ Description: Solgema.RichMenu Package Readme
         CHANGES
         -------
         
-        v 1.4 Fix menu 100% width when aligned to left and center
+        v. 1.5, 1.6 Various css fixes
+        
+        v. 1.4 Fix menu 100% width when aligned to left and center
               Better Plone 4 compatibility
         
         v. 1.3 Fix - Navigation action was displayed event if the DX content type hadn't the RichMenu behavior.
         
         v. 1.2 Allow the use of Image in RichMenu content.
+        
         
         Changelog for Solgema.PortletsManager
         
