@@ -6,7 +6,7 @@ from zope.component import getMultiAdapter, queryMultiAdapter, getUtility, adapt
 from zope.viewlet.interfaces import IViewlet
 from zope.deprecation.deprecation import deprecate
 from Products.CMFPlone import utils
-from Products.CMFPlone.browser.navigation import get_view_url
+from Products.CMFPlone.browser.navigation import get_view_url, get_id
 from Products.CMFCore.utils import getToolByName
 from zope.interface import implements, Interface
 from Products.CMFCore.interfaces._content import IDublinCore
@@ -231,6 +231,7 @@ class GlobalSectionsContentPage(BrowserView):
         rawresult = self.portal_catalog.searchResults(**query)
 
         def _get_url(item):
+            member = self.portal_state.member()
             if item.getRemoteUrl and not member == item.Creator:
                 return (get_id(item), item.getRemoteUrl)
             return get_view_url(item)
@@ -377,6 +378,7 @@ class GlobalSectionsContentPage(BrowserView):
             sublevels = getattr(self.navtree_properties, 'sections_depth', 1)
 
         def _get_url(item):
+            member = self.portal_state.member()
             if item.getRemoteUrl and not member == item.Creator:
                 return (get_id(item), item.getRemoteUrl)
             return get_view_url(item)
