@@ -11,7 +11,7 @@ jQuery.fn.extend({
   },
   hideRichMenu: function() {
     var tab = $(this);
-    var smenu = $(this).children('.smenu').not('.smenu.always');;
+    var smenu = $(this).children('.smenu:visible').not('.smenu.always');;
     if (smenu.length>0){
       smenu.stop().clearQueue();
       tab.css('z-index', '200');
