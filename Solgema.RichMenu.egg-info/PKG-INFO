@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: Solgema.RichMenu
-Version: 1.6.2
+Version: 1.6.4
 Summary: Solgema RichMenu for Plone
 Home-page: http://www.martronic.ch/plone_products/Solgema.RichMenu
 Author: Martronic SA
@@ -19,6 +19,7 @@ Description: Solgema.RichMenu Package Readme
         
         CHANGES
         -------
+        v. 1.6.4 Better touch screen handling
         
         v. 1.5, 1.6 Various css fixes
         

@@ -11,6 +11,7 @@ and click on the "Navigation" action tab.
 
 CHANGES
 -------
+v. 1.6.4 Better touch screen handling
 
 v. 1.5, 1.6 Various css fixes
 

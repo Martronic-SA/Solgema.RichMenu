@@ -33,29 +33,29 @@ function hideMenus() {
 function initRichMenu() {
   $("#portal-globalnav.hover li > .smenu").not('.smenu.always').css('opacity','0');
   $("#portal-globalnav.click li > .smenu").not('.smenu.always').css('opacity','0');
-  $("#portal-globalnav.hover > li").mouseenter(function(event){
+  $("#portal-globalnav.hover > li").on('mouseenter touchstart', function(event){
     if ($('.plone-navbar-toggle').is(":visible")) return;
     event.stopPropagation();
     $("#portal-globalnav").find('.menuhover').not($(this).parents()).not($(this)).hideRichMenu();
     $(this).showRichMenu();
     clearTimeout( delayHide );
   });
-  $("#portal-globalnav > li ul li").mouseenter(function(event){
+  $("#portal-globalnav > li ul li").on('mouseenter touchstart', function(event){
     if ($('.plone-navbar-toggle').is(":visible")) return;
     event.stopPropagation();
     $("#portal-globalnav").find('.menuhover').not($(this).parents()).not($(this)).hideRichMenu();
     $(this).showRichMenu();
     clearTimeout( delayHide );
   });
-  $("#portal-globalnav.hover").mouseleave(function(event){
+  $("#portal-globalnav.hover").on('mouseleave touchend', function(event){
     if ($('.plone-navbar-toggle').is(":visible")) return;
     delayHide = setTimeout( hideMenus, 300);
   });
-  $("#portal-globalnav.hover .menuPage li").mouseleave(function(event){
+  $("#portal-globalnav.hover .menuPage li").on('mouseleave touchend', function(event){
     if ($('.plone-navbar-toggle').is(":visible")) return;
     $(this).hideRichMenu();
   });
-  $("#portal-globalnav > li > a").click(function(event){
+  $("#portal-globalnav > li > a").on('click touchstart', function(event){
     if (!$('.plone-navbar-toggle').is(":visible") && !$("#portal-globalnav").hasClass('click')) return;
     if ($(this).parent().children().length == 1) return;
     event.preventDefault();
