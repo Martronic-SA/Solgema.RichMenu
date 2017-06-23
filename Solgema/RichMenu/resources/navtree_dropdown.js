@@ -40,6 +40,10 @@ function initRichMenu() {
     $(this).showRichMenu();
     clearTimeout( delayHide );
   });
+  $("#portal-globalnav.hover > li a").on('touch', function(event){
+    if ($(this).parent().children().length == 1) return;
+    event.preventDefault();
+  });
   $("#portal-globalnav > li ul li").on('mouseenter touchstart', function(event){
     if ($('.plone-navbar-toggle').is(":visible")) return;
     event.stopPropagation();
