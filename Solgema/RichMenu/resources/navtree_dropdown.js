@@ -33,16 +33,12 @@ function hideMenus() {
 function initRichMenu() {
   $("#portal-globalnav.hover li > .smenu").not('.smenu.always').css('opacity','0');
   $("#portal-globalnav.click li > .smenu").not('.smenu.always').css('opacity','0');
-  $("#portal-globalnav.hover > li").on('mouseenter touchstart', function(event){
+  $("#portal-globalnav.hover > li").on('mouseenter', function(event){
     if ($('.plone-navbar-toggle').is(":visible")) return;
     event.stopPropagation();
     $("#portal-globalnav").find('.menuhover').not($(this).parents()).not($(this)).hideRichMenu();
     $(this).showRichMenu();
     clearTimeout( delayHide );
-  });
-  $("#portal-globalnav.hover > li a").on('touch', function(event){
-    if ($(this).parent().children().length == 1) return;
-    event.preventDefault();
   });
   $("#portal-globalnav > li ul li").on('mouseenter touchstart', function(event){
     if ($('.plone-navbar-toggle').is(":visible")) return;
@@ -51,17 +47,27 @@ function initRichMenu() {
     $(this).showRichMenu();
     clearTimeout( delayHide );
   });
-  $("#portal-globalnav.hover").on('mouseleave touchend', function(event){
-    if ($('.plone-navbar-toggle').is(":visible")) return;
-    delayHide = setTimeout( hideMenus, 300);
-  });
   $("#portal-globalnav.hover .menuPage li").on('mouseleave touchend', function(event){
     if ($('.plone-navbar-toggle').is(":visible")) return;
     $(this).hideRichMenu();
   });
   $("#portal-globalnav > li > a").on('click touchstart', function(event){
-    if (!$('.plone-navbar-toggle').is(":visible") && !$("#portal-globalnav").hasClass('click')) return;
     if ($(this).parent().children().length == 1) return;
+    if ($("#portal-globalnav").hasClass('hover') && event.type == 'touchstart') {
+      event.stopPropagation();
+      event.preventDefault();
+      $("#portal-globalnav").find('.menuhover').not($(this).parent().parents()).not($(this).parent()).hideRichMenu();
+      if ($(this).parent().find('ul').is(":visible")) {
+        $(this).parent().hideRichMenu();
+        return
+      }
+      $(this).parent().showRichMenu();
+      clearTimeout( delayHide );
+      return
+    }
+    if (!$('.plone-navbar-toggle').is(":visible") && !$("#portal-globalnav").hasClass('click')) {
+      return;
+    }
     event.preventDefault();
     event.stopPropagation();
     if (!$(this).parent().hasClass('menuhover')) {
